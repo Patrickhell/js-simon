@@ -31,13 +31,13 @@ Esistono dei metodi per trasformare una data in millisecondi?
             let timeReamain = expireDate - actualDate;
 
             let days = Math.floor(timeReamain  / (1000 *60 *60*24));
-            let hours = Math.floor((timeReamain  % (1000 * 60 *60 *24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((timeReamain % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((timeReamain % (1000 * 60)) / 1000);
-            document.querySelector(".day span").innerHTML = days ;
-            document.querySelector(".hour span").innerHTML = hours;
-            document.querySelector(".minute span").innerHTML= minutes ; 
-            document.querySelector(".second span").innerHTML= seconds ;
+            let hours = Math.floor((timeReamain  / (1000 * 60 *60)) %24);
+            let minutes = Math.floor((timeReamain / (1000 * 60 ) % 60));
+            let seconds = Math.floor(timeReamain / (1000 ) % 60 );
+            document.querySelector(".day span").innerHTML = ("0" + days).slice(-2); ;
+            document.querySelector(".hour span").innerHTML = ("0" + hours).slice(-2);
+            document.querySelector(".minute span").innerHTML= ("0" + minutes).slice(-2) ; 
+            document.querySelector(".second span").innerHTML= ("0" + seconds ).slice(-2);
             
 
             if(timeReamain < 0) {
